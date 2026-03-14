@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor4me | Find Your Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="flex items-center justify-between px-8 py-6 bg-white shadow-sm sticky top-0 z-50">
+        <div class="text-2xl font-bold text-indigo-600">Tutor4me</div>
+        <div class="flex items-center space-x-6">
+            <a href="#how-it-works" class="text-gray-600 hover:text-indigo-600 font-medium">How it works</a>
+            <a href="#search-section" class="bg-indigo-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition shadow-md">
+                Find a Tutor
+            </a>
+        </div>
+    </nav>
+
+    <header class="py-20 px-8 text-center bg-white">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+            Learn faster with <span class="text-indigo-600">1-on-1</span> experts.
+        </h1>
+        <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+            The simplest way to find verified tutors for Maths, Science, and Coding.
+        </p>
+    </header>
+
+    <section id="search-section" class="py-20 bg-indigo-50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Search for a Subject</h2>
+            
+            <form action="/search" method="GET" class="relative max-w-2xl mx-auto">
+                <input type="text" name="query" placeholder="e.g. Maths or Python" 
+                       class="w-full p-5 pr-32 rounded-2xl border-none shadow-xl focus:ring-2 focus:ring-indigo-500 text-lg outline-none">
+                <button type="submit" class="absolute right-2 top-2 bottom-2 bg-indigo-600 text-white px-8 rounded-xl font-bold hover:bg-indigo-700 transition">
+                    Search
+                </button>
+            </form>
+
+            {% if searched %}
+                <div class="mt-12 text-left">
+                    <h3 class="text-xl font-semibold mb-4">Results for "{{ query }}":</h3>
+                    <div class="grid gap-4">
+                        {% for tutor in results %}
+                            <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-indigo-500">
+                                <h4 class="font-bold text-lg">{{ tutor.name }}</h4>
+                                <p class="text-indigo-600 font-medium">{{ tutor.subject }}</p>
+                                <p class="text-gray-600">{{ tutor.bio }}</p>
+                            </div>
+                        {% else %}
+                            <p class="text-gray-500 italic">No tutors found for that subject. Try "Maths".</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-12">How it works</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="p-6">
+                    <div class="text-indigo-600 text-3xl font-bold mb-4">01</div>
+                    <h3 class="font-bold text-xl mb-2">Search</h3>
+                    <p class="text-gray-600">Find the subject you're struggling with.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-indigo-600 text-3xl font-bold mb-4">02</div>
+                    <h3 class="font-bold text-xl mb-2">Match</h3>
+                    <p class="text-gray-600">We connect you with the best available expert.</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-indigo-600 text-3xl font-bold mb-4">03</div>
+                    <h3 class="font-bold text-xl mb-2">Succeed</h3>
+                    <p class="text-gray-600">Master the topic in personalized sessions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12 px-8 text-center">
+        <p class="text-gray-400">&copy; 2026 Tutor4me. All rights reserved.</p>
+    </footer>
+
+</body>
+</html><section id="contact" class="py-20 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-6">
+        <div class="bg-white p-10 rounded-3xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">Request a Match</h2>
+            <p class="text-center text-gray-600 mb-10">Fill out the form below and we'll pair you with a tutor within 24 hours.</p>
+            
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                        <input type="text" name="name" required class="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                        <input type="email" name="email" required class="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Subject Needed</label>
+                    <input type="text" name="subject" placeholder="e.g. GCSE Maths" required class="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                    <textarea name="message" rows="4" placeholder="Tell us about your learning goals..." class="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
+                    Send Request
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
