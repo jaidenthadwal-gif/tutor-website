@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutor4me | Tutor4me</title>
+    <title>Tutor4u | Tutor4u</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
     <header class="py-16 px-6 text-center bg-white border-b">
-        <h1 class="text-4xl font-bold text-indigo-700 mb-4">Tutor4me</h1>
+        <h1 class="text-4xl font-bold text-indigo-700 mb-4">Tutor4u</h1>
         <p class="text-gray-600 max-w-xl mx-auto mb-8">
             Master any subject with personalized, 1-on-1 lessons tailored to your pace. 
             Flexible scheduling, verified experts, and real results.
@@ -17,11 +17,40 @@
         <button class="bg-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transition">Find Your Tutor</button>
     </header>
 
-    <main class="max-w-6xl mx-auto py-12 px-6">
-        <h2 class="text-2xl font-semibold mb-8 border-l-4 border-indigo-600 pl-4">Available Experts</h2>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-            {% for tutor in tutors %}
+    <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">How Tutor4me Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <div class="text-indigo-600 text-4xl mb-4">1</div>
+                <h3 class="text-xl font-bold">Request a Match</h3>
+                <p class="text-gray-600">Tell us what subject you need help with using the form below.</p>
+            </div>
+            <div>
+                <div class="text-indigo-600 text-4xl mb-4">2</div>
+                <h3 class="text-xl font-bold">Get Connected</h3>
+                <p class="text-gray-600">We pair you with a verified expert who fits your learning style.</p>
+            </div>
+            <div>
+                <div class="text-indigo-600 text-4xl mb-4">3</div>
+                <h3 class="text-xl font-bold">Start Learning</h3>
+                <p class="text-gray-600">Book your first session and start seeing real results.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="search-section" class="py-12 bg-indigo-50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6">Find the Perfect Tutor</h2>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <input type="text" placeholder="Search by subject (e.g. Maths, Science)..." 
+                   class="w-full md:w-2/3 p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 outline-none">
+            <button class="bg-indigo-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-indigo-700 transition">
+                Search
+            </button>
+        </div>
+    </div>
+</section>
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-indigo-300 transition">
                 <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4 text-indigo-600 font-bold">
                     {{ tutor.name[0] }}
@@ -39,7 +68,7 @@
         </div>
     </main><section class="bg-gray-100 py-12 px-6">
     <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-indigo-900 mb-8">Get Started with Tutor4me</h2>
+        <h2 class="text-3xl font-bold text-center text-indigo-900 mb-8">Get Started with Tutor4u</h2>
         <div class="bg-white p-8 rounded-xl shadow-lg">
             <form action="https://formspree.io/f/xkoqzdao" method="POST" class="grid grid-cols-1 gap-6">
     <div>
