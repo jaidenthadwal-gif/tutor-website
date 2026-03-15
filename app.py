@@ -25,19 +25,23 @@ tutors = [
 ]
 
 @app.route('/')
-def home():
-    return render_template('index.html', tutors=tutors)
-from flask import request
+def index():
+    return render_template('index.html')
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    # This grabs the data from the form boxes
-    name = request.form.get('name')
-    email = request.form.get('email')
-    
-    # This prints it in your terminal so you can see it worked!
-    print(f"New Inquiry from: {name} ({email})")
-    
-    return "<h1>Message Received! We will email you soon.</h1>"
+@app.route('/search')
+def search():
+    query = request.args.get('query', '').lower()
+    # Logic to find matches
+    results = [t for t in tutors if query in t['subject'].lower() or query in t['name'].lower()]
+    return render_template('results.html', tutors=results, query=query)
+
+@app.route('/become-tutor')
+def become_tutor():
+    return render_template('become_tutor.html')
+
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html')
+
 if __name__ == '__main__':
-    app.run(debug=True, port=8001)
+    app.run(debug=True)
